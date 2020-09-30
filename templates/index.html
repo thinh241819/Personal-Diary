@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main page
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div style="font-size : 420%; text-align: center; float: right;">
+             <canvas id="newClock" width="350" height ="350">
+             </canvas>
+             <script src="{{url_for('static', filename='Clock.js')}}"></script>
+        </div>
+        </div>
+        <div class="col-sm">
+            The todo-list
+            <form action="/" method="post">
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="user_todo" placeholder="Todo" type="text">
+                    <button class="btn btn-primary" type="submit">New todo</button>
+                </div>
+            </form>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>To do</th>
+                        <th>Time created</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in rows %}
+                        <tr>
+
+                            <td>{{ item["id"] }}</td>
+                            <td>{{ item["todo"] }}</td>
+                            <td>{{ item["time"] }}</td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
