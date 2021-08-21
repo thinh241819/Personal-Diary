@@ -9,4 +9,16 @@ RUN PROCESS
 
 FOR UBUNTU
 1. https://flask.palletsprojects.com/en/2.0.x/cli/
-2. export FLASK_APP=hello
+2. https://stackoverflow.com/questions/53925660/installing-python-dependencies-locally-in-project
+
+3. export FLASK_APP=hello
+
+
+Managing Python packages the right way
+    https://opensource.com/article/19/4/managing-python-packages
+What is the easiest way to remove all packages installed by pip?
+    https://stackoverflow.com/questions/11248073/what-is-the-easiest-way-to-remove-all-packages-installed-by-pip
+How to install Python packages with pip and requirements.txt
+    https://note.nkmk.me/en/python-pip-install-requirements/
+Installing Python Dependencies locally in project
+    https://stackoverflow.com/questions/53925660/installing-python-dependencies-locally-in-project
