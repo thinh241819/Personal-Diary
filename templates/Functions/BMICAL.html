@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   BMI calculator
+{% endblock %}
+
+{% block style %}
+    <link href="/static/BMICAL.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='BMICAL.js')}}"></script>
+{% endblock %}
+
+{% block main %}
+    <div class="bmical">
+        <h1>BMI Calculator</h1>
+        <hr>
+        <label for="">Height (Feet.)</label>
+        <input type="text" class="feet" placeholder="feet">
+        <input type="text" class="inch"placeholder="inches"><br>
+        <label for="">Weight (Feet.)</label><br>
+        <input type="text" class="weight" placeholder="kg"><br>
+        <button class="btn" onclick="bmi()">Calculate</button>
+
+
+        <p></p>
+    </div>
+
+
+{% endblock %}

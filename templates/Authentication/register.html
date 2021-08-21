@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <form action="/register" method="post">
+        <div class="form-group">
+            <label for="register_username_id"><b>Username</b></label>
+            <input id="register_username_id" autocomplete="off" autofocus class="form-control" name="register_username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <label for="register_password_id">Password</label>
+            <input id="register_password_id" class="form-control" name="register_password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <label for="register_confirm_password_id">Password Confirmation</label>
+            <input id="register_confirm_password_id" class="form-control" name="register_confirm_password" placeholder="Password Confirmation" type="password">
+        </div>
+        <div class="form-group">
+            <label for="register_security_question">Choose a security question:</label>
+            <select id="register_security_question" name="register_security_question_value" type="password">
+                    <option value="0" type="password">Choose a security question.</option>
+                    <option value="What is your birthday?" type="password">What is your birthday?</option>
+                    <option value="What is the name of your first pet?" type="password">What is the name of your first pet?</option>
+                    <option value="Where were you born?" type="password">Where were you born?</option>
+                    <option value="Where did you go to primary school?" type="password">Where did you go to primary school?</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="register_security_answer_id">Answer</label>
+            <input id="register_security_answer_id" class="form-control" name="register_security_answer_value" placeholder="Answer" type="password">
+            <small id="register_security_answer_id_help" class="form-text text-muted">Type carefully, the answer will be checked character by character!</small>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+</div>
+
+{% endblock %}

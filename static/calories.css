@@ -1,0 +1,46 @@
+#submit{
+    margin-left: 400px;
+}
+
+#calForm{
+    background-color: #3333ff;
+}
+
+#result{
+    color: aqua;
+    font-size: 50px;
+    border-width: 10px;
+    border-style: inset;
+    border-color: #66ff33;
+    margin-right: 150px;
+    margin-left: 150px;
+}
+#text{
+    color: lime;
+    font-size: 50px;
+    margin-top: 20px;
+    margin-right: 150px;
+    margin-left: 150px;
+}
+
+#gender{
+    color: yellow;
+    font-size: 40px;
+    font-family: "Lucida Console", Courier, monospace;
+    margin-right: 600px;
+}
+
+#calories{
+    color: lime;
+    margin-top: 40px;
+    font-size: 40px;
+    font-family: "Lucida Console", Courier, monospace;
+}
+
+#pic{
+  margin-top: 20px;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 20px;
+
+}

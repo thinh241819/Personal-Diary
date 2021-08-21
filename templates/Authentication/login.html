@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <form action="/login" method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="login_username" placeholder="Username" type="text">
+            </div>
+            <div class="form-group">
+                <input class="form-control" name="login_password" placeholder="Password" type="password">
+            </div>
+            <input type="hidden" name="btn_identifier" value="login_login">
+            <button class="btn btn-primary" type="submit">Log In</button>
+        </form>
+        <form action="/login" method="post">
+            <input type="hidden" name="btn_identifier" value="login_forgot_password">
+            <button type="submit">Forgot password</button>
+        </form>
+    </div>
+
+{% endblock %}

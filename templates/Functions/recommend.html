@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Wake up/Go to bed
+{% endblock %}
+
+{% block style %}
+<link href="/static/web-doug.css" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='timeRecommend.js')}}"></script>
+{% endblock %}
+{% block main %}
+
+<div>
+    <h1 id="instruction">Tell us what time you want to wake up, or go to bed. And we will tell you the according time</h1>
+    <hr>
+    <form>
+        <p><b>I want to
+            <select id="choice">
+                         <option>wake up</option>
+                         <option>go to bed</option>
+            </select>
+        at:
+            <select id="time">
+                         <option>1</option>
+                         <option>2</option>
+                         <option>3</option>
+                         <option>4</option>
+                         <option>5</option>
+                         <option>6</option>
+                         <option>7</option>
+                         <option>8</option>
+                         <option>9</option>
+                         <option>10</option>
+                         <option>11</option>
+                         <option>12</option>
+            </select>
+            <select id="period">
+                         <option>am</option>
+                         <option>pm</option>
+            </select>
+        .</b>
+            <input type="button" onclick="getTime()" value="What should I do?">
+        <hr>
+
+        </p>
+    </form>
+        <div id="recommend">
+        </div>
+        <div id="decor">
+            We're waiting for you input
+        </div>
+        <div id="warn">
+        </div>
+            <div id="pic">
+                <img src="https://cdn.pixabay.com/photo/2017/09/25/13/12/dog-2785074_1280.jpg" style="max-width: 500px">
+            </div>
+
+
+</div>
+
+{% endblock %}

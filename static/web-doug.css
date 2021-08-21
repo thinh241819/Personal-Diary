@@ -1,0 +1,101 @@
+
+.calculator{
+    width: 65%;
+}
+
+.answer{
+    color : white;
+    font-family: "Lucida Console", Courier, monospace;
+    background-image: linear-gradient(to bottom right, red, blue);
+        /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+.tips{
+    width: 65%;
+    float: right;
+}
+
+.dropbtn {
+  background-color : AliceBlue;
+  color: Black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 450px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+.para{
+  background-color: #FFF0F5;
+  padding: 12px 16px;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: green;
+}
+
+/********RECOMMENDED PAGE*********/
+#advices {
+    font-size: 25px;
+    color : red;
+    font-family: "Lucida Console", Courier, monospace;
+    background-image: linear-gradient(to left, yellow, #00ff99);
+}
+
+hr{
+      border-width: 10px;
+      background-color: blue;
+}
+
+p{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30px;
+
+}
+#recommend{
+    font-size: 50px;
+}
+#decor{
+    background-color: aqua;
+    font-size: 80px;
+    border-style: inset;
+    border-color: #66ff33;
+    margin-top: 10px;
+    margin-right: 150px;
+    margin-left: 150px;
+}
+
+#warn{
+    background-color: red;
+    font-size: 20px;
+    font-family: "Lucida Console", Courier, monospace;
+    margin-top: 20px;
+}
+#pic{
+  margin-top: 50px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+/********RECOMMENDED PAGE*********/

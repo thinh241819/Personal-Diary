@@ -1,0 +1,366 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sleep Table
+{% endblock %}
+
+{% block style %}
+<link href="/static/styles.css" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block main %}
+<div class="container sleeptable">
+    <table class="table table-striped table-bordered table-sm">
+        <thead>
+            <tr>
+                <th>Input</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>
+                        Wake up
+                        <br>
+                        <br>
+                        Sleep
+                    </td>
+                    <td>
+                        <form method="POST" action="/sleeptable">
+                            <div class="form-group">
+                                {% if not rows[0] %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="mm" type="number" min="0" max="60">
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="mm" type="number" min="0" max="60">
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="1" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_monday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_monday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_monday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_monday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_lock_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Lock Time</button>
+                                {% else %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="{{ rows[0][0]["wake_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="{{ rows[0][0]["wake_min"] }}" type="number" min="0" max="60" disabled>
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="{{ rows[0][0]["sleep_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="{{ rows[0][0]["sleep_min"] }}" type="number" min="0" max="60" disabled>
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="1" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_monday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_monday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_monday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_monday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_change_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Change Time</button>
+                                {% endif %}
+
+
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="/sleeptable">
+                            <div class="form-group">
+                                {% if not rows[1] %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="mm" type="number" min="0" max="60">
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="mm" type="number" min="0" max="60">
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="2" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_tuesday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_tuesday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_tuesday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_tuesday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_lock_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Lock Time</button>
+                                {% else %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="{{ rows[1][0]["wake_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="{{ rows[1][0]["wake_min"] }}" type="number" min="0" max="60" disabled>
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="{{ rows[1][0]["sleep_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="{{ rows[1][0]["sleep_min"] }}" type="number" min="0" max="60" disabled>
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="2" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_tuesday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_tuesday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_tuesday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_tuesday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_change_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Change Time</button>
+                                {% endif %}
+
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="/sleeptable">
+                            <div class="form-group">
+                                {% if not rows[2] %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="mm" type="number" min="0" max="60">
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="mm" type="number" min="0" max="60">
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="3" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_wednesday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_wednesday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_wednesday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_wednesday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_lock_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Lock Time</button>
+                                {% else %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="{{ rows[2][0]["wake_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="{{ rows[2][0]["wake_min"] }}" type="number" min="0" max="60" disabled>
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="{{ rows[2][0]["sleep_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="{{ rows[2][0]["sleep_min"] }}" type="number" min="0" max="60" disabled>
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="3" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_wednesday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_wednesday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_wednesday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_wednesday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_change_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Change Time</button>
+                                {% endif %}
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="/sleeptable">
+                            <div class="form-group">
+                                {% if not rows[3] %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="mm" type="number" min="0" max="60">
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="mm" type="number" min="0" max="60">
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="4" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_thursday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_thursday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_thursday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_thursday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_lock_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Lock Time</button>
+                                {% else %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="{{ rows[3][0]["wake_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="{{ rows[3][0]["wake_min"] }}" type="number" min="0" max="60" disabled>
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="{{ rows[3][0]["sleep_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="{{ rows[3][0]["sleep_min"] }}" type="number" min="0" max="60" disabled>
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="4" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_thursday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_thursday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_thursday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_thursday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_change_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Change Time</button>
+                                {% endif %}
+
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+
+                <thead>
+                    <th>Input</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </thead>
+                <tr>
+                    <td>
+                        Wake up
+                        <br>
+                        <br>
+                        Sleep
+                    </td>
+                    <td>
+                        <form method="POST" action="/sleeptable">
+                            <div class="form-group">
+                                {% if not rows[4] %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="mm" type="number" min="0" max="60">
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="mm" type="number" min="0" max="60">
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="5" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_friday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_friday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_friday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_friday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_lock_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Lock Time</button>
+                                {% else %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="{{ rows[4][0]["wake_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="{{ rows[4][0]["wake_min"] }}" type="number" min="0" max="60" disabled>
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="{{ rows[4][0]["sleep_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="{{ rows[4][0]["sleep_min"] }}" type="number" min="0" max="60" disabled>
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="5" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_friday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_friday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_friday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_friday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_change_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Change Time</button>
+                                {% endif %}
+
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="/sleeptable">
+                            <div class="form-group">
+                                {% if not rows[5] %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="mm" type="number" min="0" max="60">
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="mm" type="number" min="0" max="60">
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="6" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_saturday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_saturday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_saturday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_saturday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_lock_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Lock Time</button>
+                                {% else %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="{{ rows[5][0]["wake_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="{{ rows[5][0]["wake_min"] }}" type="number" min="0" max="60" disabled>
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="{{ rows[5][0]["sleep_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="{{ rows[5][0]["sleep_min"] }}" type="number" min="0" max="60" disabled>
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="6" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_saturday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_saturday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_saturday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_saturday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_change_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Change Time</button>
+                                {% endif %}
+                            </div>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="/sleeptable">
+                            <div class="form-group">
+                                {% if not rows[6] %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="mm" type="number" min="0" max="60">
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="hh" type="number" min="0" max="24">
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="mm" type="number" min="0" max="60">
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="7" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_sunday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_sunday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_sunday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_sunday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_lock_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Lock Time</button>
+                                {% else %}
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="{{ rows[6][0]["wake_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="{{ rows[6][0]["wake_min"] }}" type="number" min="0" max="60" disabled>
+                                    <br>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="{{ rows[6][0]["sleep_hr"] }}" type="number" min="0" max="24" disabled>
+                                    <input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="{{ rows[6][0]["sleep_min"] }}" type="number" min="0" max="60" disabled>
+
+                                    <input type="hidden" name="sleep_table_day_of_week" value="7" type="number" min="0" max="24">
+                                    <input type="hidden" name="sleep_table_full_date" id="sleep_table_full_date_sunday_java" value="remove_todo" type="date">
+                                    <input type="hidden" name="sleep_table_date" id="sleep_table_date_sunday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_month" id="sleep_table_month_sunday_java" value="0" type="number">
+                                    <input type="hidden" name="sleep_table_year" id="sleep_table_year_sunday_java" value="0" type="number">
+                                    <input type="hidden" name="btn_identifier" value="sleep_table_change_time">
+                                    <br>
+                                    <button class="btn btn-primary" type="submit">Change Time</button>
+                                {% endif %}
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                <script src="{{url_for('static', filename='sleepTable.js')}}"></script>
+        </tbody>
+    </table>
+        <form method="POST" action="/sleeptable">
+            {% if (rows[0] and rows[1] and rows[2] and rows[3] and rows[4] and rows[5] and rows[6]) %}
+                <input type="hidden" name="btn_identifier" value="sleep_table_submit_table">
+                <button class="btn btn-success" type="submit">Submit Table</button>
+            {% else %}
+                <input type="hidden" name="btn_identifier" value="sleep_table_submit_table">
+                <button class="btn btn-success" type="submit" disabled>Submit Table</button>
+            {% endif %}
+        </form>
+        <br>
+
+        <h1>------------------------------------------------------------------------------------------------------------------------------</h1>
+        <h2>Summarize</h2>
+        <table class="table table-striped table-bordered table-sm">
+            <thead>
+                <th>Average time to wake up</th>
+                <th>Average time to go to bed</th>
+                <th>Average time slept</th>
+            </thead>
+            <tr>
+                <td>{{ avg_wake_hr_str }}</td>
+                <td>{{ avg_sleep_hr_str }}</td>
+                <td>{{ avg_slept_hr_str }}</td>
+            </tr>
+        </table>
+        <p>{{ line }}</p>
+        <h1>------------------------------------------------------------------------------------------------------------------------------</h1>
+        <h2>Detailed sleep schedule</h2>
+        <table class="table table-striped table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Time wake-up</th>
+                    <th>Time went to bed</th>
+                    <th>date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in rows2 %}
+                    <tr>
+                        <td>{{ item["id"] }}</td>
+                        <td>{{ filling(item["wake_hr"], 2) }} : {{ filling(item["wake_min"], 2) }}</td>
+                        <td>{{ filling(item["sleep_hr"], 2) }} : {{ filling(item["sleep_min"], 2) }}</td>
+                        <td>{{ item["fulldate"] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+{% endblock %}

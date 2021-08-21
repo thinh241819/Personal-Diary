@@ -1,43 +1,60 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Main page
+    Health App
+{% endblock %}
+
+{% block style %}
+<link href="/static/web-doug.css" rel="stylesheet">
+{% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='sleep.js')}}"></script>
 {% endblock %}
 
 {% block main %}
-<div class="container">
+<div class="container todolist">
     <div class="row">
         <div class="col-sm">
-            <div style="font-size : 420%; text-align: center; float: right;">
-             <canvas id="newClock" width="350" height ="350">
-             </canvas>
-             <script src="{{url_for('static', filename='Clock.js')}}"></script>
-        </div>
-        </div>
-        <div class="col-sm">
-            The todo-list
+            <h1>The todo-list</h1>
             <form action="/" method="post">
                 <div class="form-group">
                     <input autocomplete="off" autofocus class="form-control" name="user_todo" placeholder="Todo" type="text">
+                    <input autocomplete="off" autofocus class="form-control" name="user_due" placeholder="Due mm-dd-yyyy" type="text">
+                    <input type="hidden" name="btn_identifier" value="add_todo">
                     <button class="btn btn-primary" type="submit">New todo</button>
                 </div>
             </form>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Status</th>
+                        <th>ID</th>
                         <th>To do</th>
                         <th>Time created</th>
+                        <th>Due Date</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in rows %}
                         <tr>
-
                             <td>{{ item["id"] }}</td>
                             <td>{{ item["todo"] }}</td>
                             <td>{{ item["time"] }}</td>
-
+                            <td>{{ item["due_date"] }}</td>
+                            <td>
+                                <form method="POST" action="/">
+                                    <input type="hidden" name="delete_todo_id" value="{{ item["id"] }}">
+                                    <input type="hidden" name="btn_identifier" value="complete_todo"/>
+                                    <button class="btn btn-primary" type="submit">Done</button>
+                                </form>
+                            </td>
+							<td>
+								<form method="POST" action="/">
+									<input type="hidden" name="delete_todo_id" value="{{ item["id"] }}">
+									<input type="hidden" name="btn_identifier" value="delete_todo"/>
+									<button class="btn btn-secondary" type="submit">Fail</button>
+								</form>
+							</td>
                         </tr>
                     {% endfor %}
                 </tbody>

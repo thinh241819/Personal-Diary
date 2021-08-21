@@ -1,0 +1,7 @@
+INITIALIZE
+1. pip install Flask-Session
+
+RUN PROCESS
+1. venv\Scripts\activate
+2. $env:FLASK_APP = "application.py"
+3. $env:FLASK_ENV = "development"

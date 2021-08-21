@@ -1,0 +1,74 @@
+.bmical{
+    background-color: #060c21;
+    position: relative;
+    width: 600px;
+    min-height: 500px;
+    margin: 40px;
+}
+.bmical:before {
+    content: '';
+    position: absolute;
+    background: #fff;
+    top: -5px;
+    right: -5px;
+    left: -5px;
+    bottom: -5px;
+    z-index: -1;
+}
+.bmical:after {
+    content: '';
+    position: absolute;
+    background: #fff;
+    top: -5px;
+    right: -5px;
+    left: -5px;
+    bottom: -5px;
+    z-index: -2;
+    filter: blur(40px);
+    margin: 30px;
+}
+.bmical:before,
+.bmical::after {
+    background: linear-gradient(235deg, #ff005e, #010515, #fbff00);
+}
+
+.bmical hr {
+    background-color: #fff;
+}
+
+.bmical h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.bmical label {
+    font-size: 35px;
+    color: rgb(204, 199, 199);
+    margin-left: 35%;
+    font-weight: bold;
+}
+
+.bmical input {
+    font-size: 30px;
+    margin: 10px 5%;
+    width: 90%;
+    text-align: center;
+    font-weight: bold;
+}
+.bmical button {
+    background-color:rgb(196, 15, 15);
+    color: #fff;
+    font-size: 25px;
+    margin: 15px 35%;
+    border: none;
+}
+.bmical p{
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(7, 194, 7);
+    margin: 25px;
+    text-align: center;
+}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Profile Picture
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <form action="/downloaddata" method="POST">
+        <div class="form-group">
+            <input type="hidden" name="btn_identifier" value="download_todo">
+        </div>
+        <button class="btn btn-primary" type="submit">Download Completed Todo List</button>
+    </form>
+	<form action="/downloaddata" method="POST">
+		<div class="form-group">
+			<input type="hidden" name="btn_identifier" value="download_sleeptable">
+		</div>
+		<button class="btn btn-primary" type="submit">Download Sleep Table</button>
+	</form>
+	
+</div>
+
+{% endblock %}

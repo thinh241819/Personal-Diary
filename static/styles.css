@@ -1,24 +1,26 @@
-.row {
-    border-style: dashed;
-    background-color: lightblue;
-    color: red;
-}
 
-.col-sm {
-    border-style: dashed;
-}
-
-main .form-control
+main img
 {
-    /* center form controls */
-    display: inline-block;
-
-    /* override Bootstrap's 100% width for form controls */
-    width: auto;
+    /* constrain images on small screens */
+    max-width: 100%;
 }
 
-main
-{
+
+/******   Sleep Calculator   ******/
+
+#answer_sleep_cal {
+    color : white;
+    font-family: "Lucida Console", Courier, monospace;
+    background-image: linear-gradient(to bottom right, red, blue);
+}
+
+/****** X Sleep Calculator X ******/
+
+
+/******   Sleep Table   ******/
+.container .sleeptable {
+    justify-content: flex-start;
+
     /* scroll horizontally as needed */
     overflow-x: auto;
 
@@ -26,8 +28,45 @@ main
     text-align: center;
 }
 
-main img
+.sleeptable .form-control
 {
-    /* constrain images on small screens */
-    max-width: 100%;
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
 }
+/****** X Sleep Table X ******/
+
+/******   Todo List   ******/
+.container .todolist {
+    justify-content: flex-start;
+
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+.todolist .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+/****** X Todo List X ******/
+
+/******   BMI cal   ******/
+.container .bmi-cal {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.container .bmi-status p {
+    font-size: 4px;
+}
+/****** X BMI cal X ******/

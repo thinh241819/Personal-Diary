@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Nibbles
+{% endblock %}
+
+{% block style %}
+    <link href="/static/nibbles.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block script %}
+    <script src="{{url_for('static', filename='nibbles/nibbles.js')}}"></script>
+    <script src="{{url_for('static', filename='nibbles/nibbles-grid.js')}}"></script>
+    <script src="{{url_for('static', filename='nibbles/nibbles-images.js')}}"></script>
+    <script src="{{url_for('static', filename='nibbles/nibbles-level.js')}}"></script>
+    <script src="{{url_for('static', filename='nibbles/nibbles-events.js')}}"></script>
+
+    <script type="text/javascript">
+		window.gameLoop = function() {
+			Snake.move();
+			Snake.drawGrid();
+			Snake.drawScore();
+			if(Snake.gameOver == false) {
+				setTimeout(window.gameLoop, 200 - Snake.score*5);
+			}
+			else
+			{
+			    Snake.drawGameOver();
+			    //Snake.updateHighScores();
+			}
+		}
+
+		window.onload = function() {
+			Snake.init('game-screen', 0, window.gameLoop);
+		};
+	</script>
+{% endblock %}
+
+{% block main %}
+    <div>
+    <canvas id="game-screen" width="1000" height="800"></canvas>
+    </div>
+
+    <div>
+		<form method="POST" action="/nibbles">
+			<input type="hidden" name="snake_game_score" id="snake_game_score_id" value="0">
+			<input type="hidden" name="btn_identifier" value="replay_snake"/>
+			<button onClick="window.location.reload();" type="submit">Play Again</button>
+		</form>
+    </div>
+
+
+{% endblock %}

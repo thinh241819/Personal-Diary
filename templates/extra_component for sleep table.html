@@ -1,0 +1,55 @@
+<h1>------------------------------------------------------------------------------------------------------------------------------</h1>
+<h2>What time do you want to go to sleep today?</h2>
+<div class="form-group">
+		<input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_hh" placeholder="hh" type="number" min="0" max="24" id="wake_hr">
+		<input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_wake_time_mm" placeholder="mm" type="number" min="0" max="60" id="wake_min">
+		<br>
+		<input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_hh" placeholder="hh" type="number" min="0" max="24" id="sleep_hr">
+		<input autocomplete="off" autofocus class="col-4 form-control" name="sleep_table_sleep_time_mm" placeholder="mm" type="number" min="0" max="60" id="sleep_min">
+		<br>
+		<input type="hidden" name="sleep_table_month" id="temp_wake_hr" value="{{ avg_wake_hr }}" type="number">
+		<input type="hidden" name="sleep_table_year" id="temp_sleep_hr" value="{{ avg_sleep_hr }}" type="number">
+		<input type="hidden" name="sleep_table_year" id="temp_slept_hr" value="{{ avg_slept_hr }}" type="number">
+		<button class="btn" onclick="sleep_cal()">Calculate</button>
+</div>
+
+<table class="table table-striped table-bordered table-sm">
+	<thead>
+		<th>Question</th>
+		<th>Answer</th>
+		<th>We think this is...</th>
+	</thead>
+	<tr>
+		<td>Did you go to bed on the right time?</td>
+		<td id="sleep_table_sleep_cal_java"></td>
+		<td>
+			<b id="sleep_table_sleep_cal_java_emoji"></b>
+			<br>
+			<b id="sleep_table_sleep_cal_java_message"></b>
+		</td>
+	</tr>
+	<tr>
+		<td>Did you slept enough?</td>
+		<td id="sleep_table_slept_cal_java"></td>
+		<td>
+			<b id="sleep_table_slept_cal_java_emoji"></b>
+			<br>
+			<b id="sleep_table_slept_cal_java_message"></b>
+		</td>
+	</tr>
+</table>
+
+
+
+<tr>
+	<td>Status</td>
+	<td>
+		{% if session.slept_hr < 480 %}
+			Lacking sleep
+		{% elif session.slept_hr >= 480 and session.slept_hr <= 600 %}
+			Enough sleep
+		{% else %}
+			Too much sleep
+		{% endif %}
+	</td>
+</tr>

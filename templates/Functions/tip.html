@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Advice
+{% endblock %}
+
+{% block style %}
+<link href="/static/tip.css" rel="stylesheet">
+{% endblock %}
+{% block script %}
+<script src="{{url_for('static', filename='advice.js')}}"></script>
+{% endblock %}
+{% block main %}
+
+<div class="container">
+        <form>
+                <h2>Select the category that you want to improve on</h2>
+                <select id="mySelect">
+                <option> Please choose one of the categories below </option>
+                    <optgroup label="Sleep">
+                          <option>Alarm</option>
+                          <option>Bed</option>
+                          <option>Lighting</option>
+                          <option>Temperature</option>
+                          <option>Pillow & Mattress</option>
+                    </optgroup>
+                    <optgroup label="Time">
+                            <option>Schedule</option>
+                            <option>Rest time</option>
+                    </optgroup>
+                    <optgroup label="Nutrition">
+                            <option>Food</option>
+                            <option>Drink</option>
+                    </optgroup>
+                </select>
+                <br><br>
+                <input type="button" onclick="getOption()" value="Get tips!">
+        </form>
+        <div id="advices">
+            <p id="result"> This is where your tip will be after you selected the referred category</p>
+        </div>
+            <div id="pic"></div>
+</div>
+
+{% endblock %}
