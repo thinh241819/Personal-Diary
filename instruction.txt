@@ -5,3 +5,8 @@ RUN PROCESS
 1. venv\Scripts\activate
 2. $env:FLASK_APP = "application.py"
 3. $env:FLASK_ENV = "development"
+
+
+FOR UBUNTU
+1. https://flask.palletsprojects.com/en/2.0.x/cli/
+2. export FLASK_APP=hello
